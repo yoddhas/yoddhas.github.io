@@ -1200,7 +1200,7 @@ td,th {
 }
 
 .about_area .about_bg {
-  background: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url(../img/about.png);
+  background: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url(../img/header-bg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-size: cover;
@@ -4283,3 +4283,111 @@ h1,h2,h3,h4,h5,h6 {
     font-size: 18px;
   }
 }
+
+
+/*=====================================*/
+/*           FOOTER                    */
+/*=====================================*/
+
+footer {
+    padding-left: 80px;
+    padding-right: 70px;
+    padding-top: 72px;
+    padding-bottom: 20px;
+    background-color: #f99748;
+    color: white;
+    font-size: 10px;
+    width: 100%;
+    text-transform: uppercase;
+    font-family: 'Noto Sans HK', sans-serif;
+    letter-spacing: .18em;
+}
+
+footer a{
+  color:white;
+}
+/*
+.add-bottom-margin{
+  margin-bottom: 65px;
+}
+*/
+
+.footer-top-row{
+  margin-bottom: 35px;
+}
+
+.footer-headings{
+  color: white;
+}
+
+.footer-social-links{
+  font-size: 20px
+}
+
+@media screen and (max-width: 900px){
+  .quick-links{
+    display: none;
+  }
+}
+
+@media screen and (min-width: 901px){
+
+}
+
+a{
+  color: white;
+}
+
+a:active{
+  color: white;
+}
+
+form {
+    margin: 0 0 20px;
+}
+
+.input-form-home{
+  background-color: #f99748;
+  border:2px solid white;
+  margin-top: 15px;
+  padding: 10px 20px;
+}
+
+@media screen and (max-width: 900px){
+  .input-form-home{
+    background-color: #f99748;
+    border:2px solid #999;
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px 20px;
+  }
+
+  footer{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  /*make all the tags center aligned*/
+  .footer-align-content{
+  text-align: center;
+  }
+
+  .footer-social-links{
+    font-size: 15px
+  }
+
+  .footer-headings{
+    padding-top: 20px;
+  }
+}
+
+
+#editor-container {
+  height: 400px;
+  margin-bottom: 20px;
+}
+
+.editBar{
+  width: 80%; 
+}
+
