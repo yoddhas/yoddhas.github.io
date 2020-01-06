@@ -4396,22 +4396,13 @@ form {
 /*=====================*/
 /*GALLERY*/
 /*=====================*/
-@media screen and (max-width: 900px){
+@media screen and (max-width: 750px){
   .galleryComputer{
     display: none;
   }
-
-  .galleryPhone{
-
-  }
-
 }
 
-@media screen and (min-width: 901px){
-  .galleryComputer{
-
-  }
-
+@media screen and (min-width: 751px){
   .galleryPhone{
     display: none;
   }
