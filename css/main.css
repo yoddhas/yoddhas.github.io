@@ -8,6 +8,7 @@
   color: #fff;
 }
 
+
 ::-webkit-input-placeholder {
   color: #777777;
   font-weight: 300;
@@ -772,7 +773,7 @@ td,th {
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-@  font-face {
+  @  font-face {
     font-family: "Flaticon";
     src: url("../fonts/Flaticon.svg#Flaticon") format("svg");
   }
@@ -4290,17 +4291,17 @@ h1,h2,h3,h4,h5,h6 {
 /*=====================================*/
 
 footer {
-    padding-left: 80px;
-    padding-right: 70px;
-    padding-top: 72px;
-    padding-bottom: 20px;
-    background-color: #f99748;
-    color: white;
-    font-size: 10px;
-    width: 100%;
-    text-transform: uppercase;
-    font-family: 'Noto Sans HK', sans-serif;
-    letter-spacing: .18em;
+  padding-left: 80px;
+  padding-right: 70px;
+  padding-top: 72px;
+  padding-bottom: 20px;
+  background-color: #f99748;
+  color: white;
+  font-size: 10px;
+  width: 100%;
+  text-transform: uppercase;
+  font-family: 'Noto Sans HK', sans-serif;
+  letter-spacing: .18em;
 }
 
 footer a{
@@ -4343,7 +4344,7 @@ a:active{
 }
 
 form {
-    margin: 0 0 20px;
+  margin: 0 0 20px;
 }
 
 .input-form-home{
@@ -4369,7 +4370,7 @@ form {
 
   /*make all the tags center aligned*/
   .footer-align-content{
-  text-align: center;
+    text-align: center;
   }
 
   .footer-social-links{
@@ -4391,3 +4392,18 @@ form {
   width: 80%; 
 }
 
+
+/*=====================*/
+/*GALLERY*/
+/*=====================*/
+@media screen and (max-width: 750px){
+  .galleryComputer{
+    display: none;
+  }
+}
+
+@media screen and (min-width: 751px){
+  .galleryPhone{
+    display: none;
+  }
+}
