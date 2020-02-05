@@ -28,6 +28,173 @@
 	<link rel="stylesheet" href="css/magnific-popup.css">
 	<link rel="stylesheet" href="css/nice-select.css">
 	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
+	<style type="text/css">
+		@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+
+
+#success-message {
+  opacity: 0;
+}
+
+.col-xs-12.col-sm-12.col-md-12.col-lg-12 {
+  padding: 0 20% 0 20%;
+}
+
+.margin-top-25 {
+  margin-top: 25px;
+}
+
+.form-title {
+  padding: 25px;
+  font-size: 30px;
+  font-weight: 300;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.form-group .form-control {
+  -webkit-box-shadow: none;
+  border-bottom: 1px;
+  border-style: none none solid none;
+  border-radius:0; 
+  border-color: #000;
+}
+
+.form-group .form-control:focus {
+  box-shadow: none;
+  border-width: 0 0 2px 0;
+  border-color: #000;
+  
+}
+
+textarea {
+  resize: none;
+}
+
+.btn-mod.btn-large {
+    height: auto;
+    padding: 13px 52px;
+    font-size: 15px;
+}
+
+.btn-mod.btn-border {
+    color: #fff;
+    border: 1px solid #fff;
+    background: #f99748;
+}
+
+.btn-mod.btn-border:hover, .btn-mod.btn-border:active, .btn-mod.btn-border:focus, .btn-mod.btn-border:active:focus {
+    color: #f99748;
+    border-color: #f99748;
+    background: #fff;
+    outline: none;
+}
+
+@media only screen and (max-width: 500px) {
+    .btn-mod.btn-large {
+       padding: 6px 16px;
+       font-size: 11px;
+    }
+  
+    .form-title {
+        font-size: 20px;
+  }
+}
+
+#social {
+  margin: 20px 10px;
+  text-align: center;
+}
+
+.smGlobalBtn { /* global button class */
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border:2px solid #ddd; /* add border to the buttons */
+    box-shadow: 0 3px 3px #999;
+    padding: 0px;
+    text-decoration: none;
+    text-align: center;
+    color: #fff;
+    font-size: 25px;
+    font-weight: normal;
+    line-height: 2em;
+    border-radius: 27px;
+    -moz-border-radius:27px;
+    -webkit-border-radius:27px;
+}
+
+/* facebook button class*/
+.facebookBtn{
+    background: #4060A5;
+}
+
+.facebookBtn:before{ /* use :before to add the relevant icons */
+    font-family: "FontAwesome";
+    content: "\f09a"; /* add facebook icon */
+}
+
+.facebookBtn:hover{
+    color: #4060A5;
+    background: #fff;
+    border-color: #4060A5; /* change the border color on mouse hover */
+}
+
+/* twitter button class*/
+.twitterBtn{
+    background: #00ABE3;
+}
+
+.twitterBtn:before{
+      font-family: "FontAwesome";
+      content: "\f099"; /* add twitter icon */
+      
+}
+
+.twitterBtn:hover{
+      color: #00ABE3;
+      background: #fff;
+      border-color: #00ABE3;
+}
+
+/* google plus button class*/
+.googleplusBtn{
+    background: #e64522;
+}
+
+.googleplusBtn:before{
+      font-family: "FontAwesome";
+      content: "\f0d5"; /* add googleplus icon */
+}
+
+.googleplusBtn:hover{
+      color: #e64522;
+      background: #fff;
+      border-color: #e64522;
+}
+
+/* linkedin button class*/
+.linkedinBtn{
+    background: #0094BC;
+}
+
+.linkedinBtn:before{
+      font-family: "FontAwesome";
+      content: "\f0e1"; /* add linkedin icon */
+}
+
+.linkedinBtn:hover{
+      color: #0094BC;
+      background: #fff;
+      border-color: #0094BC;
+}
+#msgC{
+  text-align: center;
+}
+	</style>
+
 </head>
 
 <body>
@@ -121,33 +288,90 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpfS1oRGreGSBU5HHjMmQ3o5NLw7VdJ6I&callback=initMap"></script>
 
       </div>
+      <script type="text/javascript">function validateForm() {
+    var n = document.getElementById('name').value;
+    var e = document.getElementById('email').value;
+    var s = document.getElementById('subject').value;
+    var m = document.getElementById('message').value;
+    var onlyLetters =/^[a-zA-Z\s]*$/; 
+    var onlyEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    
+    
+    if(n == "" || n == null){
+        document.getElementById('nameLabel').innerHTML = ('<strong>Please enter your name</strong>');
+        document.getElementById('name').style.borderColor = "red";
+        return false;
+    }
+       
+  
+    if (!n.match(onlyLetters)) {
+        document.getElementById('nameLabel').innerHTML = ('<strong>Please enter only letters</strong>');
+        document.getElementById('name').style.borderColor = "red";
+        return false;
+    }
+  
+    if(e == "" || e == null ){
+          document.getElementById('emailLabel').innerHTML = ('<strong>Please enter your email</strong>');
+          document.getElementById('email').style.borderColor = "red";
+          return false;
+      }
+  
+    if (!e.match(onlyEmail)) {
+        document.getElementById('emailLabel').innerHTML = ('<strong>Please enter a valid email address</strong>');
+        document.getElementById('email').style.borderColor = "red";
+        return false;
+    }
+  
+    if(s == "" || s == null ){
+          document.getElementById('subjectLabel').innerHTML = ('<strong>Please enter your subject</strong>');
+          document.getElementById('subject').style.borderColor = "red";
+          return false;
+      }
+  
+    if (!s.match(onlyLetters)) {
+        document.getElementById('subjectLabel').innerHTML = ('<strong>Please enter only letters</strong>');
+        document.getElementById('subject').style.borderColor = "red";
+        return false;
+    }
+  
+    if(m == "" || m == null){
+        document.getElementById('messageLabel').innerHTML = ('<strong>Please enter your message</strong>');
+        document.getElementById('message').style.borderColor = "red";
+        return false;
+    }
+  
+    else{
+          return true;
+      }
+      
+}</script>
 
-      <div class="row">
+   <!--    <div class="row">
         <div class="col-12">
           <h2 class="contact-title">Get in Touch</h2>
         </div>
         <div class="col-lg-8">
-          <form class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm"
+          <form class="form-contact contact_form" action="send_mail.php" method="post" id="contactForm"
             novalidate="novalidate">
             <div class="row">
               <div class="col-12">
                 <div class="form-group">
-                  <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9" placeholder="Enter Message"></textarea>
+                  <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9" placeholder="Enter Message" required></textarea>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                  <input class="form-control" name="name" id="name" type="text" placeholder="Enter your name">
+                  <input class="form-control" name="name" id="name" type="text" placeholder="Enter your name" required>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                  <input class="form-control" name="email" id="email" type="email" placeholder="Enter email address">
+                  <input class="form-control" name="email" id="email" type="email" placeholder="Enter email address" required>
                 </div>
               </div>
               <div class="col-12">
                 <div class="form-group">
-                  <input class="form-control" name="subject" id="subject" type="text" placeholder="Enter Subject">
+                  <input class="form-control" name="subject" id="subject" type="text" placeholder="Enter Subject" required>
                 </div>
               </div>
             </div>
@@ -157,7 +381,52 @@
           </form>
         </div>
 
-        <div class="col-lg-4">
+ -->
+ <div class="container">
+ 	<div class="row">
+ 		<div class="col-sm-8">
+   <div class="row">
+   	
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">                        
+            <h2 class="form-title">Get in Touch</h2>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <form id="contact-form" name="myForm" class="form" action="send_mail.php" onsubmit="return validateForm()" method="POST" role="form">
+
+                  <div class="form-group">
+                      <label class="form-label" id="nameLabel" for="name"></label>
+                      <input type="text" class="form-control" id="name" name="name" placeholder="Your name" tabindex="1">
+                  </div>
+
+                  <div class="form-group">
+                      <label class="form-label" id="emailLabel" for="email"></label>
+                      <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" tabindex="2">
+                  </div>
+
+                  <div class="form-group">
+                      <label class="form-label" id="subjectLabel" for="sublect"></label>
+                      <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" tabindex="3">
+                  </div>
+
+                  <div class="form-group">
+                      <label class="form-label" id="messageLabel" for="message"></label>
+                      <textarea rows="6" cols="60" name="message" class="form-control" id="message" placeholder="Your message" tabindex="4"></textarea>                                 
+                  </div>
+
+                  <div class="text-center margin-top-25">
+                      <button type="submit" class="btn btn-mod btn-border btn-large">Send Message</button>
+                  </div>
+
+              </form><!-- End form -->
+    	        
+          </div><!-- End col -->
+   	
+        </div>
+    </div>
+        <div class="col-sm-4" style="margin-top: 15%;">
           <div class="media contact-info">
             <span class="contact-info__icon"><i class="fa fa-home"></i></span>
             <div class="media-body">
@@ -180,8 +449,15 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </div><!-- End row -->
+  </div>
+     	<div class="container">
+      <div class="row">
+
+</div></div>
+
+</div>
+
   </section>
   <!-- ================ contact section end ================= -->
 
